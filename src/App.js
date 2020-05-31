@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 //Using react Hook
@@ -131,23 +131,25 @@ class App extends Component {
 
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a rect App</h1>
-        {/* <button 
-        style={ style} 
-        onClick={ () => this.switchNameHandler('Alok') }>
-          Switch Name
-          </button> */}
-        <button 
-        style={ style} 
-        onClick={ this.tooglePersonsHandler}>
-          Toogle Person
-          </button>
-          {
-            this.state.showPersons === true ?  persons: null
-          }
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a rect App</h1>
+          {/* <button 
+          style={ style} 
+          onClick={ () => this.switchNameHandler('Alok') }>
+            Switch Name
+            </button> */}
+          <button 
+          style={ style} 
+          onClick={ this.tooglePersonsHandler}>
+            Toogle Person
+            </button>
+            {
+              this.state.showPersons === true ?  persons: null
+            }
 
-      </div>
+        </div>
+      </StyleRoot>
     )
   }
 
