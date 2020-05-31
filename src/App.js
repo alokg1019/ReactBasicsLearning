@@ -26,7 +26,8 @@ class App extends Component {
       { name: 'Max', age: 28},
       { name: 'Manu', age: 29},
       { name: 'Stephanie', age: 30},
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -47,6 +48,12 @@ class App extends Component {
     ]});
   }
 
+  tooglePersonsHandler = () => {
+
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
   render(){
 
     // Inline Styling
@@ -61,19 +68,36 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I'm a rect App</h1>
-        <button style={ style} onClick={ () => this.switchNameHandler('Alok') }>Switch Name</button>
-        <Person
-         name={this.state.persons[0].name}
-          age={this.state.persons[0].age}> 
-        </Person>
-        <Person
-         name={this.state.persons[1].name}
-         age={this.state.persons[1].age}
-         click={this.switchNameHandler.bind(this,"Alok!!")}
-         changed={this.nameChangedHandler}
-         >My Hobies: Racing
-        </Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}></Person>
+        {/* <button 
+        style={ style} 
+        onClick={ () => this.switchNameHandler('Alok') }>
+          Switch Name
+          </button> */}
+        <button 
+        style={ style} 
+        onClick={ this.tooglePersonsHandler}>
+          Toogle Person
+          </button>
+          {
+            this.state.showPersons === true ?  
+            <div>
+              <Person
+              name={this.state.persons[0].name}
+                age={this.state.persons[0].age}> 
+              </Person>
+              <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler.bind(this,"Alok!!")}
+              changed={this.nameChangedHandler}
+              >My Hobies: Racing
+              </Person>
+              <Person name={this.state.persons[2].name} age={this.state.persons[2].age}></Person>
+          </div>
+            
+            : null
+          }
+
       </div>
     )
   }
