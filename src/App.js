@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 
 //Using react Hook
@@ -75,11 +76,16 @@ class App extends Component {
 
     // Inline Styling
     const style = {
-      backgroundColor : 'white',
+      backgroundColor : 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor : 'pointer'
+      cursor : 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      },
+      color: 'white'
     }
 
     let persons = null;
@@ -113,6 +119,14 @@ class App extends Component {
             <Person name={this.state.persons[2].name} age={this.state.persons[2].age}></Person> */}
         </div>
       );
+
+
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
+
     }
 
 
@@ -172,4 +186,4 @@ class App extends Component {
 
 // }
 
-export default App;
+export default Radium(App);
