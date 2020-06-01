@@ -117,7 +117,7 @@ class App extends Component {
     return (
       <StyleRoot>
         <div className="App">
-          <Cockpit style={style} toggle={this.tooglePersonsHandler}></Cockpit>
+          <Cockpit title={this.props.title} style={style} toggle={this.tooglePersonsHandler}></Cockpit>
             {
               this.state.showPersons === true ?  persons: null
             }
