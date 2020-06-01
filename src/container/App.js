@@ -1,12 +1,13 @@
 import React, { Component, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Radium, {StyleRoot} from 'radium';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+
 
 //Using react Hook
 import {UseState} from 'react';
+import Cockpit from '../components/Persons/Cockpit/Cockpit';
 // function App() {
 //   return (
 //     <div className="App">
@@ -95,30 +96,11 @@ class App extends Component {
     {
       persons = (
           <div>
-            {
-              this.state.persons.map( (person, index) => {
-                return (<ErrorBoundary>
-                          <Person
-                          key={person.id}
-                          name={person.name}
-                          age={person.age}
-                          click={ () => this.deletePersonHandler(index)}
-                        changed={(event) => this.nameChangedHandler(event, person.id)}/>
-                 </ErrorBoundary>)
-              })
-            }
-            {/* <Person
-            name={this.state.persons[0].name}
-              age={this.state.persons[0].age}> 
-            </Person>
-            <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this,"Alok!!")}
-            changed={this.nameChangedHandler}
-            >My Hobies: Racing
-            </Person>
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age}></Person> */}
+            <Persons
+              persons={this.state.persons}
+              clicked={this.deletePersonHandler}
+              changed={this.nameChangedHandler}
+            ></Persons>
         </div>
       );
 
@@ -135,21 +117,10 @@ class App extends Component {
     return (
       <StyleRoot>
         <div className="App">
-          <h1>Hi, I'm a rect App</h1>
-          {/* <button 
-          style={ style} 
-          onClick={ () => this.switchNameHandler('Alok') }>
-            Switch Name
-            </button> */}
-          <button 
-          style={ style} 
-          onClick={ this.tooglePersonsHandler}>
-            Toogle Person
-            </button>
+          <Cockpit style={style} toggle={this.tooglePersonsHandler}></Cockpit>
             {
               this.state.showPersons === true ?  persons: null
             }
-
         </div>
       </StyleRoot>
     )
