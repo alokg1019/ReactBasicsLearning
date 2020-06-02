@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 
 const cockpit = (props) => {
+
+    //Runs for every render cycle
+    // useEffect(()=> {
+    //     console.log("[Cockpit.js] useEffect");
+    // });
 
     return (
         <div>
